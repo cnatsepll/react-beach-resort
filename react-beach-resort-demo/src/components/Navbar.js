@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import logo from '../images/marketing/vegan_symbol_plain_200.png'
-import {FaAlignRight, FaLessThanEqual} from 'react-icons/fa'
+import {FaAlignRight} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 
 export default class Navbar extends Component {
@@ -46,6 +46,6 @@ export default class Navbar extends Component {
                 </ul>
             </div>
             </nav>
-        )
+        );
     }
 }
