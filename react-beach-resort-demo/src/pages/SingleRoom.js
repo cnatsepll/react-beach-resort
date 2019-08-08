@@ -5,7 +5,7 @@ import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
-
+import StyledHero from '../components/StyledHero';
 export default class SingleRoom extends Component {
   // accessing elements by way of react router
   // the prop is being passed by react router
@@ -28,6 +28,7 @@ export default class SingleRoom extends Component {
   //componentDidMount(){}
   render() {
     const { getRoom } = this.context;
+    // here is where we see how the slug is assigned to the state
     const room = getRoom(this.state.slug);
     console.log(room);
     // if the room is undefined then we will be able to display a custom error message
@@ -56,11 +57,35 @@ export default class SingleRoom extends Component {
       pets,
       images
     } = room;
+    // this one is a bit of a doozy
+    // we will be naming two variables and assigning them values
+    // from specific parts of an array
+    // const [one, two, three] = [1,2,3];
+    // console.log(one, two, three);
+    // the above logs "1 2 3"
+    // we are using the same concept with a rest method
+    // to enumerate an array of any size 
+    // of the images 
+    const [mainImg, ...defaultImg] = images;
+
+    
     // we cant directly pass the object through but we can access the props
-    return <Hero hero='roomsHero'>
+    // the brackets have to be used to pass variables into the returned jsx
+    return (
+      <>
+    < StyledHero img={images[0] || this.state.defaultBcg}>
         <Banner title ={`${name} room`}>
-        <Link to='/rooms' className='btn-primary'> Back to Rooms </Link>
+         <Link to='/rooms' className='btn-primary'> Back to Rooms </Link>
         </Banner>
-    </Hero>
+    </StyledHero>
+        <section className="single-room">
+        <div className="single-room-images">
+          {images.map((item,index)=>{
+           return <img key={index} src={item} alt={name}/>
+          })}
+        </div>
+      </section>
+      </>
+    )
   }
 }

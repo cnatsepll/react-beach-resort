@@ -13,5 +13,10 @@ const StyledHero = styled.header`
   align-items: center;
   justify-content: center;
 `;
+// in the above js we are using a ternary operator with props
+// we are searching the styled component properties
+// for a variable named img
+// this is used on the SingleRoom page
+// it's like a parameter
 
 export default StyledHero;
