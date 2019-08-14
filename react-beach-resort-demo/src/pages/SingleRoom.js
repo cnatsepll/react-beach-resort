@@ -65,27 +65,36 @@ export default class SingleRoom extends Component {
     // the above logs "1 2 3"
     // we are using the same concept with a rest method
     // to enumerate an array of any size 
-    // of the images 
+    // of the images passed from the slug through the state
+    // mainImg will contain the first element of the images array
+    // defaultImg will be an array of the rest of the images array
+    // mainImg = [0] :: defaultImg = [1,...,100?]
     const [mainImg, ...defaultImg] = images;
 
-    
+
     // we cant directly pass the object through but we can access the props
     // the brackets have to be used to pass variables into the returned jsx
     return (
       <>
-    < StyledHero img={images[0] || this.state.defaultBcg}>
-        <Banner title ={`${name} room`}>
-         <Link to='/rooms' className='btn-primary'> Back to Rooms </Link>
-        </Banner>
-    </StyledHero>
+        < StyledHero img={images[0] || this.state.defaultBcg}>
+          <Banner title={`${name} room`}>
+            <Link to='/rooms' className='btn-primary'> Back to Rooms </Link>
+          </Banner>
+        </StyledHero>
         <section className="single-room">
-        <div className="single-room-images">
-          {images.map((item,index)=>{
-           return <img key={index} src={item} alt={name}/>
-          })}
-        </div>
-      </section>
+          <div className="single-room-images">
+            {defaultImg.map((item, index) => {
+              return <img key={index} src={item} alt={name} />
+            })}
+          </div>
+          <div className="single-room-info">
+            <article className="desc">
+              <h3> Date </h3>
+            </article>
+          </div>
+        </section>
       </>
     )
   }
 }
+

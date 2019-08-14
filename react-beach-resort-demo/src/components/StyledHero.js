@@ -8,11 +8,11 @@ import defaultImg from "../images/room-1.jpeg";
 const StyledHero = styled.header`
   min-height: 60vh;
   /* background: url(${defaultImg}); */
-  background: url(${props => (props.img ? props.img : defaultImg)});
+  background: center/cover no-repeat url(${props => (props.img ? props.img : defaultImg)});
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+  `;
 // in the above js we are using a ternary operator with props
 // we are searching the styled component properties
 // for a variable named img
